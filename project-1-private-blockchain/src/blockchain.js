@@ -112,16 +112,10 @@ class Blockchain {
      * @param {*} star 
      */
     submitStar(address, message, signature, star) {
-        let self = this;
+        
         return new Promise(async (resolve, reject) => {
             let messageTime = parseInt(message.split(':')[1]);
             let currentTime = parseInt(new Date().getTime().toString().slice(0, -3));
-
-            console.log('address', address)
-            console.log('message', message)
-            console.log('signature', signature)
-            console.log('currentTime', currentTime)
-            console.log('messageTime', messageTime)
             
             if ( (currentTime - messageTime) < FIVE_MINUTES_IN_MS ) {
                 bitcoinMessage.verify(message, address, signature);
@@ -146,7 +140,7 @@ class Blockchain {
      * @param {*} hash 
      */
     getBlockByHash(hash) {
-        let self = this;
+        
         return new Promise((resolve, reject) => {
             let blockFound = self.chain.find(block => block.hash === hash);
             resolve(blockFound);
@@ -198,7 +192,15 @@ class Blockchain {
         let self = this;
         let errorLog = [];
         return new Promise(async (resolve, reject) => {
-            self.chain.forEach( block => block.validate() );
+            self.chain.forEach( block => {
+                block.validate().then(isValid => {
+                    if (isValid === false) {
+                        errorLog.push(block)
+                    }
+                })
+            } );
+
+            resolve(errorLog);
         });
     }
 

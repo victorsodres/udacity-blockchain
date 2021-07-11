@@ -70,8 +70,8 @@ class Block {
             if (body.data === 'Genesis Block')
                 return reject(new Error("Can't return genesis block body data"));
 
-            resolve(body);
             // Resolve with the data if the object isn't the Genesis block
+            resolve(body);
         });
     }
 
