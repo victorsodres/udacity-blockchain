@@ -1,0 +1,152 @@
+{
+	"info": {
+		"_postman_id": "0de95b80-9549-4495-a09e-3030bcf2f9cb",
+		"name": "Udacity Blockchain",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Project 1",
+			"item": [
+				{
+					"name": "Get genesis block",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/block/height/0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"block",
+								"height",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get block by hash",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/block/hash/4ea5c508a6566e76240543f8feb06fd457777be39549c4016436afda65d2330e",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"block",
+								"hash",
+								"4ea5c508a6566e76240543f8feb06fd457777be39549c4016436afda65d2330e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Request validation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"address\": \"16E53MpAymEVKNxNWUjzjGnxi7dMXYzJp4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/requestValidation",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"requestValidation"
+							]
+						},
+						"description": "Só funfa com Legacy Wallet, as criadas com SigWit não funcionam"
+					},
+					"response": []
+				},
+				{
+					"name": "Submit Star",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"signature\": \"HywJJ2Lk3u8klG+gPhbkswMglQbhAJYZks+Oe3hUHPJwEeqwOyHfuMBdKsmFyesN+YAErsCoMWCAZ2fvnTiamsQ=\",\r\n    \"address\": \"16E53MpAymEVKNxNWUjzjGnxi7dMXYzJp4\",\r\n    \"message\": \"16E53MpAymEVKNxNWUjzjGnxi7dMXYzJp4:1626040966:starRegistry\",\r\n    \"star\": {\r\n        \"dec\": \"10º 10' 24.5\",\r\n        \"ra\" : \"11h 12m 1.0s\",\r\n        \"story\": \"Testing star\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/submitstar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"submitstar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get stars by address",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/blocks/16E53MpAymEVKNxNWUjzjGnxi7dMXYzJp4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"blocks",
+								"16E53MpAymEVKNxNWUjzjGnxi7dMXYzJp4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validate Chain",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/validateChain",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"validateChain"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
